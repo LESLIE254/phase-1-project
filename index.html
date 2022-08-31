@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css/">
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zoo Keeping Project</title>
 </head>
 <body>
-    <h2>Welcome to the Zoo</h2>
+    <header id="bar">
+         <h2>Welcome to the Zoo</h2>
+    </header>
+    <div class="Container">
+        <form id="zoo-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
+            <label for="name">Image URL</label>
+            <input type="text" id="image_url" name="image_url" />
+            <label for="description">Description</label>
+            <button type="submit">Donate</button> 
+            <button type="click">like</button>     
+         </form>
+         <ul id="animal-list" class="cards"></ul>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
