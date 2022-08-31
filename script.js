@@ -15,13 +15,13 @@ function renderAnimal(animal) {
     let card = document.createElement('li')
     card.className= 'card'
     card.innerHTML= `
-    <img src="${animal.imageUrl}">
+    <img src="${animal.image_link}">
     <div class-"content">
         <h4>${animal.name}</h4>
         <p>
             $<span class="donation-count">${animal.donations}</span> Donated
         </p>
-        <p>${animal.description}</p>
+        <p>latin-name:${animal.animal_type}, annimal_type:${animal.animal_type} </p>
     </div>
     <div class="buttons">
         <button>Donate 1000 KES </button>
