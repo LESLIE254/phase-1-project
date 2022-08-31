@@ -21,7 +21,8 @@ function renderAnimal(animal) {
         <p>
             $<span class="donation-count">${animal.donations}</span> Donated
         </p>
-        <p>latin-name:${animal.animal_type}, annimal_type:${animal.animal_type} </p>
+        <p>latin-name:${animal.animal_type}, animal_type:${animal.animal_type}, active_time:${animal.active_time}, length_min:${animal.length_min}, length_max:${animal.length_max}, weight_min:${animal.weight_min}, weight_max:${animal.weight_max}, lifespan:${animal.lifespan}, habitat:${animal.habitat},
+        diet:${animal.diet},geo_range:${animal.geo_range}</p>
     </div>
     <div class="buttons">
         <button>Donate 1000 KES </button>
