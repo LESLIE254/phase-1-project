@@ -13,7 +13,7 @@
 zooData()*/
 
 //Event listeners
-document.querySelector('#zoo-form').addEventListener('submit',handleSubmit)
+//document.querySelector('#zoo-form').addEventListener('submit',handleSubmit)
 
 //Event Handlers
 function handleSubmit(e) {
@@ -23,7 +23,7 @@ function handleSubmit(e) {
         image_link: e.target.image_link.value,
         //donations:0,
         //latin_name: e.target.latin_name.value,
-       // animal_type: e.target.animal_type.value,
+        //animal_type: e.target.animal_type.value,
         //active_time: e.target.active_time.value,
         //length_min: e.target.length_min.value,
         //length_max: e.target.length_max.value,
@@ -62,12 +62,19 @@ function renderAnimal(animal) {
    //let img = document.querySelector('img')
    //card.classList.add('cards')
     //Add cards to DOM
-    document.querySelector('#animal-list').appendChild(card)
     card.querySelector('#donate').addEventListener('click', () => {
-        animal.donations+= 1000
+        animal.donations+=1000
         card.querySelector('span').textContent = animal.donations
         updateDonations(animal)
     })
+
+    card.querySelector('#set_free').addEventListener('click', () => {
+        card.remove()
+        deleteAnimal(animal.id)
+    })
+
+    //Add animal card to DOM
+    document.querySelector('#animal-list').appendChild(card)  
 }
 
 
@@ -89,18 +96,29 @@ function adoptAnimal(animalObject) {
     .then(res => res.json())
     .then(animal => console.log(animal))
 }
-
 function updateDonations(animalObject) {
-    fetch(`https://zoo-animal-api.herokuapp.com/animals/rand/5/${animalObject.id}`, {
+    fetch(`https://zoo-animal-api.herokuapp.com/animals/rand/5${animalObject.id}`,{
         method: 'PATCH',
         headers: {
-            'content-Type': 'application/json'
+            'Content-Type': 'application/json'
         },
-        body:JSON.stringify(animalObject)
+        body: JSON.stringify(animalObject)
     })
-    .then(res => res.json())
+    .then(resp => resp.json())
     .then(animal => console.log(animal))
 }
+
+function deleteAnimal(id) {
+    fetch(`https://zoo-animal-api.herokuapp.com/animals/rand/5${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json' 
+        }
+    })
+    .then(resp => resp.json())
+    .then(animal => console.log(animal))
+}
+
 //getAllAnimals()
 
 function initialize() {
