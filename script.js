@@ -11,16 +11,17 @@
 
 }
 zooData()*/
-
-//Event listeners
-//document.querySelector('#zoo-form').addEventListener('submit',handleSubmit)
+document.addEventListener('DOMContentLoaded',()=>{
+    //Event listeners
+document.querySelector('#zoo-form').addEventListener('submit',handleSubmit)
 
 //Event Handlers
 function handleSubmit(e) {
-    e.preventDeafult()
+    e.preventDefault()
     let animalObject = {
         name: e.target.name.value,
-        image_link: e.target.image_link.value,
+        image_Url: e.target.image_url.value,
+        description:e.target.description.value
         //donations:0,
         //latin_name: e.target.latin_name.value,
         //animal_type: e.target.animal_type.value,
@@ -34,8 +35,20 @@ function handleSubmit(e) {
         //diet: e.target.diet.value,
         //geo_range: e.target.geo_range.value
     }
-    renderAnimal(animalObject)
+    //renderAnimal(animalObject)
+    //adoptAnimal(animalObject)
+ fetch('http://localhost:3000/animalData', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(animalObject)
+ })
+ .then(resp => resp.json())
+ .then(animal => console.log(animal))  
 }
+
+})
 
 
 
@@ -80,7 +93,7 @@ function renderAnimal(animal) {
 
 //Fetch Request
 function getAllAnimals() {
-    fetch("https://zoo-animal-api.herokuapp.com/animals/rand/5")
+   fetch("https://zoo-animal-api.herokuapp.com/animals/rand/5")
     .then(resp => resp.json())
     .then(animalData => animalData.forEach(animal => renderAnimal(animal)))
 }
@@ -97,7 +110,7 @@ function adoptAnimal(animalObject) {
     .then(animal => console.log(animal))
 }
 function updateDonations(animalObject) {
-    fetch(`https://zoo-animal-api.herokuapp.com/animals/rand/5${animalObject.id}`,{
+    fetch(` https://zoo-animal-api.herokuapp.com/animals/rand/5${animalObject.id}`,{
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
@@ -125,3 +138,4 @@ function initialize() {
     getAllAnimals()
 }
 initialize()
+
