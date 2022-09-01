@@ -13,9 +13,10 @@
 zooData()*/
 function renderAnimal(animal) {
     let card = document.createElement('li')
+   card.style.marginLeft= '500px'
     card.className= 'card'
     card.innerHTML= `
-    <img src="${animal.image_link}">
+    <img src="${animal.image_link}"style="width: 600px">
     <div class-"content">
         <h4>${animal.name}</h4>
         <p>
@@ -29,6 +30,8 @@ function renderAnimal(animal) {
         <button> Set Free </button>
     </div>    
     `
+   //let img = document.querySelector('img')
+   //card.classList.add('cards')
     //Add cards to DOM
     document.querySelector('#animal-list').appendChild(card)
 }
