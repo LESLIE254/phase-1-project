@@ -55,11 +55,4 @@ button[type="submit"] {
 button[type="click"] {
     padding: 0.25em 0.5em;
 }
-.card {
-    margin: 0.5em 0;
-    padding: 0.5em 1;
-    border: solid 1px black;
-    border-radius: 6px;
-    min-height: auto;
-    max-width: 100%;
-}
+
